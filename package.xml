@@ -5,6 +5,7 @@
   <author>Meißner Pascal, Schleicher Ralf</author>
   <maintainer email="asr-ros@lists.kit.edu">Meißner Pascal</maintainer>
   <license>BSD</license>
+  <url type="website">http://ros.org/wiki/asr_xsd2cpp</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <run_depend>xsdcxx</run_depend>
