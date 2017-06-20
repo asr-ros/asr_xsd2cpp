@@ -24,6 +24,8 @@ def main():
 	'''
 	creates the cpp object from xmlschema
 	'''
+	ros_env = os.environ['ROS_DISTRO'].lower()
+	
 	basepath = os.path.abspath(os.path.curdir)
 	projectName = os.path.basename(basepath)
 	xmlschemapath = os.path.join(basepath, "xsd")
@@ -43,7 +45,10 @@ def main():
 		for file in files:
 			f = os.path.splitext(file)
 			if f[1] == ".xsd":
-				os.system("xsd cxx-tree --std c++11 --guard-prefix %s --cxx-suffix .cpp --hxx-suffix .h --polymorphic-type-all %s" % (f[0], os.path.join(root, file)))
+				if ros_env == "indigo":
+					os.system("xsd cxx-tree --std c++11 --guard-prefix %s --cxx-suffix .cpp --hxx-suffix .h --polymorphic-type-all %s" % (f[0], os.path.join(root, file)))
+				else:
+					os.system("xsdcxx cxx-tree --std c++11 --guard-prefix %s --cxx-suffix .cpp --hxx-suffix .h --polymorphic-type-all %s" % (f[0], os.path.join(root, file)))
 
 if __name__ == "__main__":
 	main()
