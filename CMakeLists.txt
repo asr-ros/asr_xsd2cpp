@@ -3,4 +3,4 @@ project(asr_xsd2cpp)
 
 find_package(catkin)
 
-catkin_package()
+catkin_package(CFG_EXTRAS catkin_make.cmake)
